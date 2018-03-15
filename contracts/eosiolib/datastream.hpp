@@ -132,6 +132,29 @@ class datastream<size_t> {
 };
 
 /**
+ *  Serialize a checksum256 into a stream
+ *  @brief Serialize a checksum256
+ *  @param ds stream to write
+ *  @param chk value to serialize
+ */
+template<typename Stream>
+inline datastream<Stream>& operator<<(datastream<Stream>& ds, const checksum256& chk) {
+  ds.write( (const char*)&chk, sizeof(checksum256) );
+  return ds;
+}
+/**
+ *  Deserialize a key256 from a stream
+ *  @brief Deserialize a key256
+ *  @param ds stream to read
+ *  @param chk destination for deserialized value
+ */
+template<typename Stream>
+inline datastream<Stream>& operator>>(datastream<Stream>& ds, checksum256& chk) {
+  ds.read((char*)&chk, sizeof(checksum256) );
+  return ds;
+}
+
+/**
  *  Serialize a key256 into a stream
  *  @brief Serialize a key256
  *  @param ds stream to write
