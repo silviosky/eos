@@ -51,6 +51,7 @@ struct test_print {
   static void test_prints();
   static void test_prints_l();
   static void test_printi();
+  static void test_printui();
   static void test_printi128();
   static void test_printn();
 };
@@ -69,7 +70,7 @@ struct test_action {
   static void assert_false();
   static void assert_true();
   static void now();
-  static void test_abort();
+  static void test_abort() __attribute__ ((noreturn)) ;
   static void test_current_receiver();
   static void test_current_sender();
   static void test_publication_time();
@@ -137,10 +138,14 @@ struct test_multi_index {
    static void idx64_general();
    static void idx64_store_only();
    static void idx64_check_without_storing();
+   static void idx128_general();
+   static void idx128_store_only();
+   static void idx128_check_without_storing();
    static void idx128_autoincrement_test();
    static void idx128_autoincrement_test_part1();
    static void idx128_autoincrement_test_part2();
    static void idx256_general();
+   static void idx_double_general();
 };
 
 struct test_crypto {
